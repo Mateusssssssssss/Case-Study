@@ -1,0 +1,43 @@
+CASE STUDY:
+
+Havia 8 datasets, entre esses 8 datastes o objetivo era mesclar 6 tabelas, que são elas: 
+order_id, product_id, seller_id, price, order_status e product_category_name.
+utilizando SQL para consolidar as informações.
+Plataforma utilizada: Google Cloud (BigQuery).
+Codigo SQL:
+
+%%sql
+SELECT 
+    tb1.order_id,
+    tb1.product_id,
+    tb1.seller_id,
+    tb1.price,
+    tb3.order_status,
+    tb4.product_category_name
+FROM `eloquent-life-440311-t4.estagio.order_items` AS tb1
+LEFT JOIN `eloquent-life-440311-t4.estagio.order_payments` AS tb2
+ON tb1.order_id = tb2.order_id
+LEFT JOIN `eloquent-life-440311-t4.estagio.orders_dataset` AS tb3
+ON tb1.order_id = tb3.order_id
+LEFT JOIN `eloquent-life-440311-t4.estagio.products_dataset` AS tb4
+ON tb1.product_id = tb4.product_id
+LEFT JOIN `eloquent-life-440311-t4.estagio.sellers_dataset` AS tb5
+ON tb1.seller_id = tb5.seller_id
+LIMIT 1000;
+
+Após salvar e exportar a consulta SQL com as tabelas necessárias, 
+optei por continuar a análise, tratamento e limpeza dos dados em Python, 
+utilizando as bibliotecas Pandas e Statistics. Com isso, 
+consegui obter insights relevantes, como o total de vendas, 
+o ID dos vendedores com maior volume de vendas e a identificação 
+dos produtos com maires e menores vendas.
+
+Codigo se encontra no arquivo case.py
+
+
+Após realizar as consultas no Python, avancei para a criação de um dashboard, 
+com o objetivo de fornecer uma explicação visual clara dos insights obtidos
+por meio dessas consultas.
+
+Link dos Dash: https: //https://lnkd.in/dFZcGyGp
+                        https://lnkd.in/d786ke5e
